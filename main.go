@@ -23,6 +23,7 @@ type Output struct {
 }
 
 func GetProducts(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Set("Content-Type", "application/json")
 	reqBody, _ := io.ReadAll(r.Body)
 	var d DataType
 	var o Output
