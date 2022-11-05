@@ -22,7 +22,7 @@ type Output struct {
 	Result        int64  `json:"result"`
 }
 
-func GetProducts(rw http.ResponseWriter, r *http.Request) {
+func Arithmetic(rw http.ResponseWriter, r *http.Request) {
 	rw.Header().Set("Content-Type", "application/json")
 	reqBody, _ := io.ReadAll(r.Body)
 	var d DataType
@@ -48,7 +48,7 @@ func GetProducts(rw http.ResponseWriter, r *http.Request) {
 func main() {
 	sm := mux.NewRouter()
 	getRouter := sm.Methods("POST").Subrouter()
-	getRouter.HandleFunc("/post", GetProducts)
+	getRouter.HandleFunc("/post", Arithmetic)
 
 	//Setting up the server //tune the elements to timeout to avoid bad connections errors
 	s := &http.Server{
